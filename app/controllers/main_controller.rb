@@ -7,7 +7,13 @@ class MainController < ApplicationController
   def hashtags
     
     @screen_name = params[:screen_name]
+    
+    
+    
     @timeline = Twitter.user_timeline(@screen_name)
+    
+    save_keyword(true)
+    
     @hashtags = []
     
     @timeline.each do |tweet| 
@@ -17,7 +23,19 @@ class MainController < ApplicationController
   end
   
   
+  
+  private
+  
+  def save_keyword(found)
+    @keyword = Keyword.find_or_initialize_by_value(@screen_name)
+    @keyword.found = found
+    @keyword.count += 1
+    @keyword.save 
+  end  
+  
   def username_not_found
+    
+    save_keyword(false)
     logger.error "username does not exist: #{@screen_name}"
     redirect_to( { :action => :index }, :alert => "username does not exist: #{@screen_name}")
   end
