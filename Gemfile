@@ -6,6 +6,8 @@ gem 'jquery-rails', '1.0.13'
 gem 'json', '1.5.4'
 gem 'mysql2', '0.3.7'
 gem 'rake', '0.9.2'
+gem 'twitter'
+gem 'twitter-text'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,0 +1,8 @@
+<h1>Show Hashtags of user</h1>
+<p>
+<%= form_tag(:action => "hashtags") do %>
+  <p><%= label_tag(:screen_name,"twitter username") %></p>
+  <p><%= text_field_tag(:screen_name) %></p>
+  <p><%= submit_tag "search hashtags", :id => "submit", :name => "submit", :class => "form_submit" %></p>
+<% end -%>
+</p>
