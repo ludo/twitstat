@@ -18,7 +18,8 @@ class MainController < ApplicationController
   
   
   def username_not_found
-    redirect_to( { :action => :index }, :alert => 'username does not exist.')
+    logger.error "username does not exist: #{@screen_name}"
+    redirect_to( { :action => :index }, :alert => "username does not exist: #{@screen_name}")
   end
 
 end
